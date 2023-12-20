@@ -1,0 +1,5 @@
+Class player {
+    constructor(){
+        
+    }
+}

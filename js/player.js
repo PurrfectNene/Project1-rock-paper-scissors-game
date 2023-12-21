@@ -1,4 +1,5 @@
-Class player {
-    constructor(){  
+class Player {
+    constructor(){
+      
     }
 }

@@ -1,44 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./style.css" />
     <title>Gotta Win Em All</title>
-</head>
-<body>
-    <main>
-        <div id="game-intro">
-          <img id="game-title-img" src="./images/title.png" alt="game-title">
+  </head>
+  <body>
+    <div id="game-intro">
+      <img id="game-title-img" src="./images/title.png" alt="game-title" />
 
-          <span id="instructions">
-            <p>
-            INSTRUCTIONS:<br>
-            1. Choose from: paper, rock, scissors.<br>
-            2. Remember that:<br>
-            - Paper defeats rock<br>
-            - Rock defeats scissors<br>
-            - Scissors defeats paper<br>
-            3. There are 3 rounds.To win the game, you must win at least two rounds.<br>
-            </p>
-          </span>
+      <span id="instructions">
+        <p>
+          INSTRUCTIONS:<br />
+          1. Choose from: paper, rock, scissors.<br />
+          2. Remember that:<br />
+          - Paper defeats rock<br />
+          - Rock defeats scissors<br />
+          - Scissors defeats paper<br />
+          3. There are 3 rounds.To win the game, you must win at least two
+          rounds.<br />
+        </p>
+      </span>
 
-          <button id="start-button"><img src="./images/start-game.png" alt=""></button>
-        </div>
-  
-        <div id="game-container">
-          <div id="game-screen"></div>
-        </div>
+      <button id="start-button">
+        <img src="./images/start-game.png" alt="" />
+      </button>
+    </div>
 
-        <div id="game-end">
-          <img src="./images/game-over.png" alt="game-over">
-          <br />
-          <button id="restart-button"><img src="./images/restart.png" alt="restart"></button>
-        </div>
-    </main>
+    <div id="game-screen"></div>
 
-    <script src="./game.js"></script>
-    <script src="./player.js"></script>
-</body>
+    <div id="game-end">
+      <img src="./images/game-over.png" alt="game-over" />
+      <!-- The image must change if winner or tie -->
+      <br />
+      <button id="restart-button">
+        <img src="./images/restart.png" alt="restart" />
+      </button>
+    </div>
+
+    <script type="text/javascript" src="./js/script.js"></script>
+    <script type="text/javascript" src="./js/game.js"></script>
+    <!-- <script type="text/javascript" src="./js/player.js"></script> -->
+  </body>
 </html>

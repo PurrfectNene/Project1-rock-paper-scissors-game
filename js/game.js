@@ -29,13 +29,17 @@ class Game {
 
             const pikaWinner = document.getElementById("pika-endimage")
             pikaWinner.src = "./images/pika-win.png"
-            pikaWinner.alt = "pikawinner"
+            pikaWinner.alt = "pika winner"
         }
 
         else if(outcome === "loose"){
             const myOutcome = document.getElementById("my-outcome")
             myOutcome.src = "./images/game-over.png"
             myOutcome.alt = "game over"
+
+            const pikaLoser = document.getElementById("pika-endimage")
+            pikaLoser.src = "./images/pika-loose.png"
+            pikaLoser.alt = "pika loser"
         }
 
         else if(outcome === "tie"){

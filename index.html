@@ -35,22 +35,32 @@
       <button id="game-tie" style="background-color: white">Tie</button>
       <!-- buttons to remove -->
 
-      <div id="move-choise">
-        <img id="user-move" src="./images/scissors.png" alt="" />
-        <img id="cpu-move" src="./images/rock.png" alt="" />
-      </div>
+      <span id="player-choice">
+        <div>
+          <button>
+            <img id="user-scissors" src="./images/scissors.png" alt="" />
+          </button>
+          <button><img id="user-paper" src="./images/paper.png" alt="" /></button>
+          <button><img id="user-rock" src="./images/rock.png" alt="" /></button>
+        </div>
+        <div id="cpu-choice">
+          <button><img id="cpu-move" src="" alt="" /></button>
 
-      <div id="characters">
-        <img id="pikachu" src="./images/pikachu.png" alt="pikachu" />
-        <img id="meowth" src="./images/meowth.png" alt="meowth" />
-      </div>
+        </div>
+        
+      </span>
+
+      <!-- <div id="players">
+        <img id="user-player" src="./images/pikachu.png" alt="pikachu" />
+        <img id="cpu-player" src="./images/meowth.png" alt="meowth" />
+      </div> -->
     </div>
 
     <div id="game-end">
       <div id="end-page-images">
         <img id="my-outcome" src="" alt="" />
         <img id="pika-endimage" src="" alt="" />
-        <!-- The image must change if winner or tie -->
+
       </div>
       <div id="restart">
         <button id="restart-button">
@@ -61,7 +71,5 @@
 
     <script type="text/javascript" src="./js/script.js"></script>
     <script type="text/javascript" src="./js/game.js"></script>
-    <script type="text/javascript" src="./js/player.js"></script>
   </body>
 </html>
-

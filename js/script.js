@@ -14,20 +14,33 @@ window.onload = function () {
 
   possibleChoices[0].addEventListener("click", function (){
     game.playerChoice("scissors")
-    //remove event listener
+    // possibleChoices[0].removeEventListener("click", removeClickScissors)
   })
 
   possibleChoices[1].addEventListener("click", function (){
     game.playerChoice ("paper")
-    //remove event listener
+    // possibleChoices[1].removeEventListener("click", removeClickPaper)
   })
 
   possibleChoices[2].addEventListener("click", function(){
     game.playerChoice("rock")
-    //remove event listener
+    // possibleChoices[2].removeEventListener("click", removeClickRock)
   })
 
+  // function removeClickScissors (){
+  //   game.playerChoice("scissors")
+  //   possibleChoices[0].removeEventListener("click", removeClickScissors)
+  // }
   
+  // function removeClickPaper (){
+  //   game.playerChoice("paper")
+  //   possibleChoices[1].removeEventListener("click", removeClickPaper)
+  // }
+
+  // function removeClickRock (){
+  //   game.playerChoice("rock")
+  //   possibleChoices[2].removeEventListener("click", removeClickRock)
+  // }
 
 
 

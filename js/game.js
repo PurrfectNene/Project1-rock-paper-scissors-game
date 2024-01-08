@@ -4,6 +4,7 @@ class Game {
     this.gameScreen = document.getElementById("game-screen");
     this.gameEndScreen = document.getElementById("game-end");
     this.possibleChoices= ["scissors", "paper", "rock"]
+    this.choices = [document.getElementById("user-scissors"), document.getElementById("user-paper"), document.getElementById("user-rock")];
   }
 
   startGame() {
@@ -15,51 +16,62 @@ class Game {
 
   playerChoice(choice) {
     if (choice === "scissors") {
-        const choicesLeft = [document.getElementById("user-paper"), document.getElementById("user-rock")]
-        choicesLeft[0].style.opacity  = 0//note: turn 1 for the value to show
-        choicesLeft[1].style.opacity = 0//note: turn 1
+      // this.choices[0].style.opacity = 1
+      this.choices[1].style.opacity = 0; //note: turn 1 for the value to show
+      this.choices[2].style.opacity = 0; //note: turn 1
+    } else if (choice === "paper") {
+      this.choices[0].style.opacity = 0;
+      // this.choices[1].style.opacity = 1
+      this.choices[2].style.opacity = 0;
+    } else if (choice === "rock") {
+      this.choices[0].style.opacity = 0;
+      this.choices[1].style.opacity = 0;
+      // this.choices[2].style.opacity = 1
     }
-    else if (choice === "paper"){
-        const choicesLeft = [document.getElementById("user-scissors"), document.getElementById("user-rock")]
-        choicesLeft[0].style.opacity  = 0
-        choicesLeft[1].style.opacity = 0
-    }
-    else if (choice === "rock"){
-        const choicesLeft = [document.getElementById("user-scissors"), document.getElementById("user-paper")]
-        choicesLeft[0].style.opacity  = 0
-        choicesLeft[1].style.opacity = 0
-    }
-
-
-    this.cpuRandom()
   }
 
   cpuRandom() {
+    const randomChoice = Math.floor(Math.random() * this.possibleChoices.length);
+    const cpuChoice = this.possibleChoices[randomChoice];
+
     setTimeout(() => {
-    const randomChoice = Math.floor(Math.random()*this.possibleChoices.length)
-    const cpuChoice = this.possibleChoices[randomChoice]
-    const cpuMoveImg = document.getElementById("cpu-move")
+      const cpuMoveImg = document.getElementById("cpu-move");
 
-    
-    if (cpuChoice === "scissors"){
-        cpuMoveImg.src = "./images/scissors.png"
-        cpuMoveImg.alt = "scissors"
-    }
-    else if (cpuChoice === "paper"){
-        cpuMoveImg.src = "./images/paper.png"
-        cpuMoveImg.alt = "paper"
-    }
-    else if (cpuChoice === "rock"){
-        cpuMoveImg.src = "./images/rock.png"
-        cpuMoveImg.alt = "rock"
-    }
-    }, 2000);
+      if (cpuChoice === "scissors") {
+        cpuMoveImg.src = "./images/scissors.png";
+        cpuMoveImg.alt = "scissors";
+      } 
+      else if (cpuChoice === "paper") {
+        cpuMoveImg.src = "./images/paper.png";
+        cpuMoveImg.alt = "paper";
+      } 
+      else if (cpuChoice === "rock") {
+        cpuMoveImg.src = "./images/rock.png";
+        cpuMoveImg.alt = "rock";
+      }
+    }, 1000);
 
+    return cpuChoice;
   }
 
-  gamePlay() {
+  gamePlay(choice) {
+    this.playerChoice(choice);
+    const cpuChoice = this.cpuRandom();
 
+    // this.possibleChoices= ["scissors", "paper", "rock"]
+    setTimeout (()=> {
+      if (choice === cpuChoice){
+        this.endGame("tie")
+       }
+      else if(choice === this.possibleChoices[0] && cpuChoice === this.possibleChoices[1] || choice === this.possibleChoices[1] && cpuChoice === this.possibleChoices[2] || choice === this.possibleChoices[2] && cpuChoice === this.possibleChoices[0]){
+        this.endGame("win")
+      }
+      else {
+        this.endGame("loose")
+      }
+    }, 3000);
   }
+
 
   endGame(outcome) {
     this.gameScreen.style.display = "none";
@@ -75,7 +87,8 @@ class Game {
       const pikaWinner = document.getElementById("pika-endimage");
       pikaWinner.src = "./images/pika-win.png";
       pikaWinner.alt = "pika winner";
-    } else if (outcome === "loose") {
+    } 
+    else if (outcome === "loose") {
       const myOutcome = document.getElementById("my-outcome");
       myOutcome.src = "./images/game-over.png";
       myOutcome.alt = "game over";
@@ -83,11 +96,15 @@ class Game {
       const pikaLoser = document.getElementById("pika-endimage");
       pikaLoser.src = "./images/pika-loose.png";
       pikaLoser.alt = "pika loser";
-    } else if (outcome === "tie") {
+    } 
+    else if (outcome === "tie") {
       const myOutcome = document.getElementById("my-outcome");
       myOutcome.src = "./images/tie.png";
       myOutcome.alt = "tie";
+
+      const psyduckTie = document.getElementById("pika-endimage");
+      psyduckTie.src = "./images/tieImg.png";
+      psyduckTie.alt = "psyduck confused tie";
     }
   }
 }
-

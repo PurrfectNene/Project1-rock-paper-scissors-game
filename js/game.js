@@ -11,6 +11,7 @@ class Game {
     this.gameScreen.style.display = "block";
     this.gameIntro.style.zIndex = "1";
     this.gameScreen.style.zIndex = "2";
+  }
 
   playerChoice(choice) {
     if (choice === "scissors") {
@@ -89,3 +90,4 @@ class Game {
     }
   }
 }
+

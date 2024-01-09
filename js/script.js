@@ -18,15 +18,18 @@ window.onload = function () {
   possibleChoices[2].addEventListener("click", playRock);
 
   function playScissors() {
-    game.gamePlay("scissors");
+    // game.gamePlay("scissors");
+    game.playRound("scissors");
   }
 
   function playPaper() {
-    game.gamePlay("paper");
+    // game.gamePlay("paper");
+    game.playRound("paper");
   }
 
   function playRock() {
-    game.gamePlay("rock");
+    // game.gamePlay("rock");
+    game.playRound("rock");
   }
 
   restartButton.addEventListener("click", () => {

@@ -5,6 +5,11 @@ class Game {
     this.gameEndScreen = document.getElementById("game-end");
     this.possibleChoices= ["scissors", "paper", "rock"]
     this.choices = [document.getElementById("user-scissors"), document.getElementById("user-paper"), document.getElementById("user-rock")];
+    this.rounds = 3;
+    this.results = [];
+    this.currentRound = 0;
+    this.userScore = 0
+    this.cpuScore = 0
   }
 
   startGame() {
@@ -12,6 +17,8 @@ class Game {
     this.gameScreen.style.display = "block";
     this.gameIntro.style.zIndex = "1";
     this.gameScreen.style.zIndex = "2";
+
+    this.playRound()
   }
 
   playerChoice(choice) {
@@ -55,23 +62,51 @@ class Game {
   }
 
   gamePlay(choice) {
-    this.playerChoice(choice);
-    const cpuChoice = this.cpuRandom();
+    // this.playerChoice(choice);
+    // const cpuChoice = this.cpuRandom();
 
-    // this.possibleChoices= ["scissors", "paper", "rock"]
-    setTimeout (()=> {
+    this.playRound(choice)
+
+    // setTimeout (()=> {
       if (choice === cpuChoice){
         this.endGame("tie")
        }
       else if(choice === this.possibleChoices[0] && cpuChoice === this.possibleChoices[1] || choice === this.possibleChoices[1] && cpuChoice === this.possibleChoices[2] || choice === this.possibleChoices[2] && cpuChoice === this.possibleChoices[0]){
         this.endGame("win")
+        this.userScore+= 1
       }
       else {
         this.endGame("loose")
+        this.cpuScore+=1
+
       }
-    }, 3000);
+    // }, 3000);
+    
+    
   }
 
+  playRound(choice){
+    this.playerChoice(choice);
+    const cpuChoice = this.cpuRandom();
+
+    if (choice === cpuChoice){
+      this.results.push("tie")
+      this.userScore+=1
+      this.cpuScore+=1
+      }
+    else if(choice === this.possibleChoices[0] && cpuChoice === this.possibleChoices[1] || choice === this.possibleChoices[1] && cpuChoice === this.possibleChoices[2] || choice === this.possibleChoices[2] && cpuChoice === this.possibleChoices[0]){
+      this.results.push("win")
+      this.userScore+=1
+    }
+    else {
+      this.results.push("loose")
+      this.cpuScore+=1
+    }
+
+    console.log(this.results);
+  }
+
+  
 
   endGame(outcome) {
     this.gameScreen.style.display = "none";

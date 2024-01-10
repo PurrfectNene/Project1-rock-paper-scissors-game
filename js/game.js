@@ -60,20 +60,32 @@ class Game {
     // }, 2000);
 
     if(this.currentRound >=2){
-      this.nextRoundImg.src = "./images/nextround.png"
-      this.nextRoundImg.alt = "next round"
-      this.nextRoundImg.style.opacity = 1
+      if(this.userScore > this.cpuScore) {
+        this.nextRoundImg.src = "./images/nextround-win.png"
+        this.nextRoundImg.alt = "win round"
+        this.nextRoundImg.style.opacity = 1
+      }
+      else if(this.userScore === this.cpuScore){
+        this.nextRoundImg.src = "./images/nextround-tie.png"
+        this.nextRoundImg.alt = "tie round"
+        this.nextRoundImg.style.opacity = 1
+      }
+      else {
+        this.nextRoundImg.src = "./images/nextround-lose.png"
+        this.nextRoundImg.alt = "lose round"
+        this.nextRoundImg.style.opacity = 1
+      }
+      
       setTimeout(() => {
         this.nextRoundImg.style.opacity = 0
       }, 1500);
-      
+
       const cpuMoveImg = document.getElementById("cpu-move");
       cpuMoveImg.src = "";
       cpuMoveImg.alt = "";
       console.log("hand hidden");
     }
 
-    
     let roundNumber = `round${this.currentRound}`
 
     this.roundImg.src = `./images/${roundNumber}.png`
@@ -137,31 +149,44 @@ class Game {
       this.userScore += 1;
     } 
     else {
-      this.results.push("loose");
+      this.results.push("lose");
       this.cpuScore += 1;
     }
 
     console.log(this.results);
 
     setTimeout(() => {
-      if(this.currentRound >= 3){
+      if(this.currentRound >= 2){
         this.checkOutcome()
       }
       else{
         this.startGame()
       }
-    }, 3000);
+    }, 5000);
   }
 
   checkOutcome(){
-    if(this.userScore > this.cpuScore) {
-      this.endGame("win");
-    }
-    else if(this.userScore === this.cpuScore){
-      this.endGame("tie");
-    }
+    if (this.currentRound === 2) {
+      if(this.userScore === 2) {
+        this.endGame("win");
+      }
+      else if (this.cpuScore === 2) {
+        this.endGame("lose")
+      }
+      else {
+        this.startGame()
+      }
+    } 
     else {
-      this.endGame("loose")
+      if(this.userScore > this.cpuScore) {
+        this.endGame("win");
+      }
+      else if(this.userScore === this.cpuScore){
+        this.endGame("tie");
+      }
+      else {
+        this.endGame("lose")
+      }
     }
   }
 
@@ -179,13 +204,13 @@ class Game {
       const pikaWinner = document.getElementById("pika-endimage");
       pikaWinner.src = "./images/pika-win.png";
       pikaWinner.alt = "pika winner";
-    } else if (outcome === "loose") {
+    } else if (outcome === "lose") {
       const myOutcome = document.getElementById("my-outcome");
       myOutcome.src = "./images/game-over.png";
       myOutcome.alt = "game over";
 
       const pikaLoser = document.getElementById("pika-endimage");
-      pikaLoser.src = "./images/pika-loose.png";
+      pikaLoser.src = "./images/pika-lose.png";
       pikaLoser.alt = "pika loser";
     } else if (outcome === "tie") {
       const myOutcome = document.getElementById("my-outcome");

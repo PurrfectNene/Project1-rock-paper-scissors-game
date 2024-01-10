@@ -30,6 +30,10 @@ body {
   margin-top: 50px;
 }
 
+#next-round{
+  opacity: 0;
+}
+
 #instructions {
   font-family: "Pokemon Solid", sans-serif;
 }

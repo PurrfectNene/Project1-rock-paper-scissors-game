@@ -3,9 +3,10 @@ class Game {
     this.gameIntro = document.getElementById("game-intro");
     this.gameScreen = document.getElementById("game-screen");
     this.gameEndScreen = document.getElementById("game-end");
-    this.roundImg = document.getElementById("round")
-    this.playerScoreLabel = document.getElementById("playerScore")
-    this.cpuScoreLabel = document.getElementById("cpuScore")
+    this.roundImg = document.getElementById("round");
+    this.nextRoundImg = document.getElementById("next-round");
+    this.playerScoreLabel = document.getElementById("playerScore");
+    this.cpuScoreLabel = document.getElementById("cpuScore");
     this.possibleChoices = ["scissors", "paper", "rock"];
     this.choices = [
       document.getElementById("user-scissors"),
@@ -34,8 +35,11 @@ class Game {
   }
 
   startGame() {
+
     console.log("Started new game!")
     this.currentRound++
+    console.log(this.currentRound);
+
     this.playerScoreLabel.textContent = `${this.userScore}`;
     this.cpuScoreLabel.textContent = `${this.cpuScore}`;
 
@@ -47,6 +51,28 @@ class Game {
     this.choices[0].style.opacity = 1;
     this.choices[1].style.opacity = 1;
     this.choices[2].style.opacity = 1;
+
+    // setTimeout(() => {
+    //   const cpuMoveImg = document.getElementById("cpu-move");
+    //   cpuMoveImg.src = "";
+    //   cpuMoveImg.alt = "";
+    //   console.log("hand hidden");
+    // }, 2000);
+
+    if(this.currentRound >=2){
+      this.nextRoundImg.src = "./images/nextround.png"
+      this.nextRoundImg.alt = "next round"
+      this.nextRoundImg.style.opacity = 1
+      setTimeout(() => {
+        this.nextRoundImg.style.opacity = 0
+      }, 1500);
+      
+      const cpuMoveImg = document.getElementById("cpu-move");
+      cpuMoveImg.src = "";
+      cpuMoveImg.alt = "";
+      console.log("hand hidden");
+    }
+
     
     let roundNumber = `round${this.currentRound}`
 

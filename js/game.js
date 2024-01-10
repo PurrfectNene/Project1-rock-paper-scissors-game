@@ -4,6 +4,8 @@ class Game {
     this.gameScreen = document.getElementById("game-screen");
     this.gameEndScreen = document.getElementById("game-end");
     this.roundImg = document.getElementById("round")
+    this.playerScoreLabel = document.getElementById("playerScore")
+    this.cpuScoreLabel = document.getElementById("cpuScore")
     this.possibleChoices = ["scissors", "paper", "rock"];
     this.choices = [
       document.getElementById("user-scissors"),
@@ -33,6 +35,10 @@ class Game {
 
   startGame() {
     console.log("Started new game!")
+    this.currentRound++
+    this.playerScoreLabel.textContent = `${this.userScore}`;
+    this.cpuScoreLabel.textContent = `${this.cpuScore}`;
+
     this.gameIntro.style.display = "none";
     this.gameScreen.style.display = "block";
     this.gameIntro.style.zIndex = "1";
@@ -40,7 +46,12 @@ class Game {
 
     this.choices[0].style.opacity = 1;
     this.choices[1].style.opacity = 1;
-    this.choices[2].style.opacity = 1; 
+    this.choices[2].style.opacity = 1;
+    
+    let roundNumber = `round${this.currentRound}`
+
+    this.roundImg.src = `./images/${roundNumber}.png`
+    this.roundImg.alt = roundNumber
   }
 
   playerChoice(choice) {
@@ -81,30 +92,6 @@ class Game {
     return cpuChoice;
   }
 
-  gamePlay(choice) {
-
-    this.playRound(choice);
-
-    if (choice === cpuChoice) {
-      this.endGame("tie");
-    } else if (
-      (choice === this.possibleChoices[0] &&
-        cpuChoice === this.possibleChoices[1]) ||
-      (choice === this.possibleChoices[1] &&
-        cpuChoice === this.possibleChoices[2]) ||
-      (choice === this.possibleChoices[2] &&
-        cpuChoice === this.possibleChoices[0])
-    ) {
-      this.endGame("win");
-      this.userScore += 1;
-    } else {
-      this.endGame("loose");
-      this.cpuScore += 1;
-    }
-
-    
-  }
-
   playRound(choice) {
     this.playerChoice(choice);
     const cpuChoice = this.cpuRandom();
@@ -119,7 +106,7 @@ class Game {
         cpuChoice === this.possibleChoices[2]) ||
       (choice === this.possibleChoices[2] &&
         cpuChoice === this.possibleChoices[0])
-    ) {
+    ) { 
       this.results.push("win");
       this.userScore += 1;
     } 
@@ -129,9 +116,27 @@ class Game {
     }
 
     console.log(this.results);
+
     setTimeout(() => {
-      this.startGame()
-    }, 5000);
+      if(this.currentRound >= 3){
+        this.checkOutcome()
+      }
+      else{
+        this.startGame()
+      }
+    }, 2000);
+  }
+
+  checkOutcome(){
+    if(this.userScore > this.cpuScore) {
+      this.endGame("win");
+    }
+    else if(this.userScore === this.cpuScore){
+      this.endGame("tie");
+    }
+    else {
+      this.endGame("loose")
+    }
   }
 
   endGame(outcome) {

@@ -124,7 +124,7 @@ class Game {
       else{
         this.startGame()
       }
-    }, 2000);
+    }, 3000);
   }
 
   checkOutcome(){

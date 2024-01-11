@@ -28,7 +28,7 @@ body {
 #instructions {
   padding: 1%;
   font-family: "Brush Script MT", cursive;
-  font-size: 23px;
+  font-size: 15px;
   background-color: #87cefa;
   border: 2px solid #4169e1;
   font-weight: bold;
@@ -36,7 +36,7 @@ body {
 }
 
 #start-button img {
-  width: 100%;
+  width: 70%;
   height: auto;
 }
 
@@ -69,8 +69,16 @@ body {
   height: auto;
 }
 
-#label-player-score {
-  padding-top: 6%;
+#user-score-section,
+#cpu-score-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#user-score-number,
+#cpu-score-number {
+  padding: 0.2% 0 0 0.5%
 }
 
 #next-round {
@@ -166,5 +174,13 @@ button {
   #user-rock,
   #cpu-move {
     width: 90%;
+  }
+
+  #start-button img {
+    width: 100%;
+  }
+
+  #instructions {
+    font-size: 23px;
   }
 }

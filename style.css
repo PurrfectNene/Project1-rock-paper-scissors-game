@@ -30,8 +30,12 @@ body {
   margin-top: 50px;
 }
 
+
+
 #next-round{
+  margin-top: 5%;
   opacity: 0;
+  width: 15%;
 }
 
 #instructions {
@@ -49,40 +53,55 @@ body {
   background-image: url("./images/background.png");
   background-repeat: no-repeat;
   background-size: cover;
-  /* background to change */
 }
 
-#player-choice {
-  margin-top: 300px;
+#roundImg{
+  margin: 3% 0 5% 0 ;
+  width: 15%;
+  height: auto;
+}
+
+#player-score-img{
+  width: 10%;
+  height: auto;
+}
+
+#cpu-score-img{
+  width: 8%;
+  height: auto;
+}
+
+#label-player-score{
+  padding-top: 6%;
+}
+
+.user-cpu-choices{
   display: flex;
-  justify-content: center;
-}
-
-#cpu-move {
-  padding-left: 450px;
-}
-
-#user-scissors {
-  padding-left: 150px;
-}
-
-#players {
-  top: 50px;
-  display: flex;
+  flex-direction: row;
   justify-content: space-around;
 }
 
-#cpu-player {
-  width: 450px;
-  height: auto;
-  padding-left: 50px;
+#user-choice{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-#user-player {
-  width: 350px;
+#cpu-choice{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#paper-scissors-rock-img{
+  display: flex;
+  flex-direction: row;
+}
+
+#user-player,
+#cpu-player{
+  width: 80%;
   height: auto;
-  padding-left: 50px;
-  padding-right: 50px;
 }
 
 #game-end {
@@ -95,7 +114,6 @@ body {
   background-color: lightblue;
   background-size: cover;
   background-repeat: no-repeat;
-  /* background to change */
 }
 
 #end-page-images {

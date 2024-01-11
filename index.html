@@ -31,39 +31,44 @@
 
     <div id="game-screen">
       <div>
-        <img id = "round" src="images/round1.png" alt="">
+        <img id = "roundImg" src="images/round1.png" alt="">
       </div>
 
       <div>
-        <label for="score">Player score: <span id="playerScore"></span> </label>
+        <img id="player-score-img" src="./images/player-score.png" alt="player-score">
+        <label for="score"> <span id="playerScore"></span> </label>
       </div>
       <div>
-        <label for="score">Cpu score: <span id="cpuScore"></span> </label>
+        <label for="score"><img id="cpu-score-img" src="./images/cpu-score.png" alt="cpu-score"> <span id="cpuScore"></span> </label>
       </div>
 
       <div>
         <img id = "next-round" src="./images/nextround-win.png" alt="">
       </div>
 
-      <span id="player-choice">
-        <div>
+      <div class="user-cpu-choices">
+
+        <div id="user-choice">
+
+          <div id="paper-scissors-rock-img">
           <button>
             <img id="user-scissors" src="./images/scissors.png" alt="" />
           </button>
           <button><img id="user-paper" src="./images/paper.png" alt="" /></button>
           <button><img id="user-rock" src="./images/rock.png" alt="" /></button>
-        </div>
-        <div id="cpu-choice">
-          <button><img id="cpu-move" src="" alt="" /></button>
+          </div>
 
-        </div>
-        
-      </span>
-
-      <div id="players">
         <img id="user-player" src="./images/pikachu.png" alt="pikachu" />
-        <img id="cpu-player" src="./images/meowth.png" alt="meowth" />
+        </div>
+
+        <div>
+          <div id="cpu-choice">
+            <button><img id="cpu-move" src="./images/scissors.png" alt="" /></button>
+          </div>
+          <img id="cpu-player" src="./images/meowth.png" alt="meowth" />
+        </div>
       </div>
+
     </div>
 
     <div id="game-end">

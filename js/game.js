@@ -3,10 +3,11 @@ class Game {
     this.gameIntro = document.getElementById("game-intro");
     this.gameScreen = document.getElementById("game-screen");
     this.gameEndScreen = document.getElementById("game-end");
-    this.roundImg = document.getElementById("round");
+    this.roundImg = document.getElementById("roundImg");
     this.nextRoundImg = document.getElementById("next-round");
     this.playerScoreLabel = document.getElementById("playerScore");
     this.cpuScoreLabel = document.getElementById("cpuScore");
+    this.cpuMoveImg = document.getElementById("cpu-move");
     this.possibleChoices = ["scissors", "paper", "rock"];
     this.choices = [
       document.getElementById("user-scissors"),
@@ -32,6 +33,8 @@ class Game {
     this.choices[2].addEventListener("click", () => {
       this.playRound("rock");
     })
+
+    this.cpuMoveImg.style.opacity = 0;
   }
 
   startGame() {
@@ -41,7 +44,13 @@ class Game {
     console.log(this.currentRound);
 
     this.playerScoreLabel.textContent = `${this.userScore}`;
+    this.playerScoreLabel.style.fontSize = '36px';
+    this.playerScoreLabel.style.fontWeight = 'bold';
+    this.playerScoreLabel.style.fontStyle = "'Brush Script MT', cursive";
     this.cpuScoreLabel.textContent = `${this.cpuScore}`;
+    this.cpuScoreLabel.style.fontSize = '36px';
+    this.cpuScoreLabel.style.fontWeight = 'bold';
+    this.cpuScoreLabel.style.fontStyle = "'Brush Script MT', cursive";
 
     this.gameIntro.style.display = "none";
     this.gameScreen.style.display = "block";
@@ -78,11 +87,9 @@ class Game {
       
       setTimeout(() => {
         this.nextRoundImg.style.opacity = 0
+        this.cpuMoveImg.style.opacity = 0
       }, 1500);
 
-      const cpuMoveImg = document.getElementById("cpu-move");
-      cpuMoveImg.src = "";
-      cpuMoveImg.alt = "";
       console.log("hand hidden");
     }
 
@@ -91,6 +98,7 @@ class Game {
     this.roundImg.src = `./images/${roundNumber}.png`
     this.roundImg.alt = roundNumber
   }
+
 
   playerChoice(choice) {
     if (choice === "scissors") {
@@ -113,18 +121,17 @@ class Game {
     const cpuChoice = this.possibleChoices[randomChoice];
 
     setTimeout(() => {
-      const cpuMoveImg = document.getElementById("cpu-move");
-
       if (cpuChoice === "scissors") {
-        cpuMoveImg.src = "./images/scissors.png";
-        cpuMoveImg.alt = "scissors";
+        this.cpuMoveImg.src = "./images/scissors.png";
+        this.cpuMoveImg.alt = "scissors";
       } else if (cpuChoice === "paper") {
-        cpuMoveImg.src = "./images/paper.png";
-        cpuMoveImg.alt = "paper";
+        this.cpuMoveImg.src = "./images/paper.png";
+        this.cpuMoveImg.alt = "paper";
       } else if (cpuChoice === "rock") {
-        cpuMoveImg.src = "./images/rock.png";
-        cpuMoveImg.alt = "rock";
+        this.cpuMoveImg.src = "./images/rock.png";
+        this.cpuMoveImg.alt = "rock";
       }
+      this.cpuMoveImg.style.opacity = 1;
     }, 1000);
 
     return cpuChoice;

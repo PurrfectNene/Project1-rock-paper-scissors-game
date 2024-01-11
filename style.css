@@ -30,16 +30,19 @@ body {
   margin-top: 50px;
 }
 
-
-
-#next-round{
+#next-round {
   margin-top: 5%;
   opacity: 0;
   width: 15%;
 }
 
 #instructions {
-  font-family: "Pokemon Solid", sans-serif;
+  padding: 1%;
+  font-family: "Brush Script MT", cursive;
+  background-color: #87CEFA;
+  border: 2px solid #4169E1;
+  font-weight: bold;
+  margin: 4%
 }
 
 #game-screen {
@@ -51,56 +54,56 @@ body {
   width: 100vw;
   height: 100vh;
   background-image: url("./images/background.png");
-  
+
   background-repeat: no-repeat;
   background-size: cover;
 }
 
-#roundImg{
-  margin: 3% 0 5% 0 ;
+#roundImg {
+  margin: 3% 0 5% 0;
   width: 15%;
   height: auto;
 }
 
-#player-score-img{
+#player-score-img {
   width: 10%;
   height: auto;
 }
 
-#cpu-score-img{
+#cpu-score-img {
   width: 8%;
   height: auto;
 }
 
-#label-player-score{
+#label-player-score {
   padding-top: 6%;
 }
 
-.user-cpu-choices{
+.user-cpu-choices {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
 }
 
-#user-choice{
+#user-choice {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-#cpu-choice{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-#paper-scissors-rock-img{
+#paper-scissors-rock-img {
   display: flex;
   flex-direction: row;
 }
 
+#cpu-choice {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 #user-player,
-#cpu-player{
+#cpu-player {
   width: 80%;
   height: auto;
 }
@@ -110,8 +113,8 @@ body {
   left: 0px;
   top: 0px;
   z-index: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: auto;
   background-color: lightblue;
   background-size: cover;
   background-repeat: no-repeat;
@@ -128,7 +131,7 @@ body {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  height: 100vh
+  height: 100vh;
 }
 
 button {

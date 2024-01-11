@@ -20,7 +20,7 @@ class Game {
     this.userScore = 0;
     this.cpuScore = 0;
 
-    this.initGame()
+    this.initGame();
   }
 
   initGame() {
@@ -32,23 +32,23 @@ class Game {
     });
     this.choices[2].addEventListener("click", () => {
       this.playRound("rock");
-    })
+    });
 
     this.cpuMoveImg.style.opacity = 0;
   }
 
   startGame() {
-    console.log("Started new game!")
-    this.currentRound++
+    console.log("Started new game!");
+    this.currentRound++;
     console.log(`Current round: ${this.currentRound}`);
 
     this.playerScoreLabel.textContent = `${this.userScore}`;
-    this.playerScoreLabel.style.fontSize = '36px';
-    this.playerScoreLabel.style.fontWeight = 'bold';
+    this.playerScoreLabel.style.fontSize = "36px";
+    this.playerScoreLabel.style.fontWeight = "bold";
     this.playerScoreLabel.style.fontStyle = "'Brush Script MT', cursive";
     this.cpuScoreLabel.textContent = `${this.cpuScore}`;
-    this.cpuScoreLabel.style.fontSize = '36px';
-    this.cpuScoreLabel.style.fontWeight = 'bold';
+    this.cpuScoreLabel.style.fontSize = "36px";
+    this.cpuScoreLabel.style.fontWeight = "bold";
     this.cpuScoreLabel.style.fontStyle = "'Brush Script MT', cursive";
 
     this.gameIntro.style.display = "none";
@@ -56,12 +56,11 @@ class Game {
     this.gameIntro.style.zIndex = "1";
     this.gameScreen.style.zIndex = "2";
 
-    let roundNumber = `round${this.currentRound}`
+    let roundNumber = `round${this.currentRound}`;
 
-    this.roundImg.src = `./images/${roundNumber}.png`
-    this.roundImg.alt = roundNumber
+    this.roundImg.src = `./images/${roundNumber}.png`;
+    this.roundImg.alt = roundNumber;
   }
-
 
   playerChoice(choice) {
     if (choice === "scissors") {
@@ -73,7 +72,6 @@ class Game {
     } else if (choice === "rock") {
       this.choices[0].style.opacity = 0;
       this.choices[1].style.opacity = 0;
-     
     }
   }
 
@@ -95,7 +93,7 @@ class Game {
         this.cpuMoveImg.alt = "rock";
       }
       this.cpuMoveImg.style.opacity = 1;
-    }, 1000);
+    }, 1100);
 
     return cpuChoice;
   }
@@ -106,19 +104,17 @@ class Game {
 
     if (choice === cpuChoice) {
       this.results.push("tie");
-    } 
-    else if (
+    } else if (
       (choice === this.possibleChoices[0] &&
         cpuChoice === this.possibleChoices[1]) ||
       (choice === this.possibleChoices[1] &&
         cpuChoice === this.possibleChoices[2]) ||
       (choice === this.possibleChoices[2] &&
         cpuChoice === this.possibleChoices[0])
-    ) { 
+    ) {
       this.results.push("win");
       this.userScore += 1;
-    } 
-    else {
+    } else {
       this.results.push("lose");
       this.cpuScore += 1;
     }
@@ -126,68 +122,61 @@ class Game {
     console.log(this.results);
 
     setTimeout(() => {
-      this.displayOutcome()
-      if(this.currentRound >= 2){
-        this.checkOutcome()
+      this.displayOutcome();
+
+      if (this.currentRound >= 2) {
+        this.checkOutcome();
+      } else {
+        this.startGame();
       }
-      else{
-        this.startGame()
-      }
-    }, 5000);
+    }, 3000);
   }
 
   displayOutcome() {
     let previousOutcome = this.results[this.currentRound - 1];
     console.log(previousOutcome);
 
-    if(previousOutcome === "win") {
-      this.nextRoundImg.src = "./images/nextround-win.png"
-      this.nextRoundImg.alt = "win round"
-      this.nextRoundImg.style.opacity = 1
+    if (previousOutcome === "win") {
+      this.nextRoundImg.src = "./images/nextround-win.png";
+      this.nextRoundImg.alt = "win round";
+      this.nextRoundImg.style.opacity = 1;
+    } else if (previousOutcome === "tie") {
+      this.nextRoundImg.src = "./images/nextround-tie.png";
+      this.nextRoundImg.alt = "tie round";
+      this.nextRoundImg.style.opacity = 1;
+    } else {
+      this.nextRoundImg.src = "./images/nextround-lose.png";
+      this.nextRoundImg.alt = "lose round";
+      this.nextRoundImg.style.opacity = 1;
     }
-    else if(previousOutcome === "tie"){
-      this.nextRoundImg.src = "./images/nextround-tie.png"
-      this.nextRoundImg.alt = "tie round"
-      this.nextRoundImg.style.opacity = 1
-    }
-    else {
-      this.nextRoundImg.src = "./images/nextround-lose.png"
-      this.nextRoundImg.alt = "lose round"
-      this.nextRoundImg.style.opacity = 1
-    }
-    
+
     setTimeout(() => {
-      this.nextRoundImg.style.opacity = 0
-      this.cpuMoveImg.style.opacity = 0
+      this.nextRoundImg.style.opacity = 0;
+      this.cpuMoveImg.style.opacity = 0;
       this.choices[0].style.opacity = 1;
       this.choices[1].style.opacity = 1;
       this.choices[2].style.opacity = 1;
     }, 1500);
 
-      console.log("hand hidden");
+    console.log("hand hidden");
   }
 
-  checkOutcome(){
+  checkOutcome() {
     if (this.currentRound === 2) {
-      if(this.userScore === 2) {
+      if (this.userScore === 2) {
         this.endGame("win");
+      } else if (this.cpuScore === 2) {
+        this.endGame("lose");
+      } else {
+        this.startGame();
       }
-      else if (this.cpuScore === 2) {
-        this.endGame("lose")
-      }
-      else {
-        this.startGame()
-      }
-    } 
-    else {
-      if(this.userScore > this.cpuScore) {
+    } else {
+      if (this.userScore > this.cpuScore) {
         this.endGame("win");
-      }
-      else if(this.userScore === this.cpuScore){
+      } else if (this.userScore === this.cpuScore) {
         this.endGame("tie");
-      }
-      else {
-        this.endGame("lose")
+      } else {
+        this.endGame("lose");
       }
     }
   }

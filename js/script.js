@@ -15,6 +15,5 @@ window.onload = function () {
 
   restartButton.addEventListener("click", () => {
     location.reload();
-    console.log();
   });
 };

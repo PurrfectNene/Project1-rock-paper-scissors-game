@@ -38,9 +38,7 @@ class Game {
   }
 
   startGame() {
-    console.log("Started new game!");
     this.currentRound++;
-    console.log(`Current round: ${this.currentRound}`);
 
     this.playerScoreLabel.textContent = `${this.userScore}`;
     this.playerScoreLabel.style.fontSize = "36px";
@@ -119,8 +117,6 @@ class Game {
       this.cpuScore += 1;
     }
 
-    console.log(this.results);
-
     setTimeout(() => {
       this.displayOutcome();
 
@@ -134,7 +130,6 @@ class Game {
 
   displayOutcome() {
     let previousOutcome = this.results[this.currentRound - 1];
-    console.log(previousOutcome);
 
     if (previousOutcome === "win") {
       this.nextRoundImg.src = "./images/nextround-win.png";
@@ -157,8 +152,6 @@ class Game {
       this.choices[1].style.opacity = 1;
       this.choices[2].style.opacity = 1;
     }, 1500);
-
-    console.log("hand hidden");
   }
 
   checkOutcome() {

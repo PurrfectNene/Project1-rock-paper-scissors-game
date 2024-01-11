@@ -22,27 +22,22 @@ body {
 }
 
 #game-title-img {
-  width: 800px;
-}
-
-#start-button img {
-  width: 200px;
-  margin-top: 50px;
-}
-
-#next-round {
-  margin-top: 2%;
-  opacity: 0;
-  width: 15%;
+  width: 35%;
 }
 
 #instructions {
   padding: 1%;
   font-family: "Brush Script MT", cursive;
-  background-color: #87CEFA;
-  border: 2px solid #4169E1;
+  font-size: 23px;
+  background-color: #87cefa;
+  border: 2px solid #4169e1;
   font-weight: bold;
-  margin: 4%
+  margin: 4%;
+}
+
+#start-button img {
+  width: 100%;
+  height: auto;
 }
 
 #game-screen {
@@ -60,7 +55,7 @@ body {
 
 #roundImg {
   margin: 2% 0 2% 0;
-  width: 15%;
+  width: 12%;
   height: auto;
 }
 
@@ -78,6 +73,12 @@ body {
   padding-top: 6%;
 }
 
+#next-round {
+  margin-top: 2%;
+  opacity: 0;
+  width: 15%;
+}
+
 .user-cpu-choices {
   display: flex;
   flex-direction: row;
@@ -89,17 +90,21 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  position: absolute;
+  left: 10%;
+  bottom: 2.5%;
 }
 
-#paper-scissors-rock-img {
+.paper-scissors-rock-img {
   display: flex;
   flex-direction: row;
 }
 
 #user-scissors,
 #user-paper,
-#user-rock{
-  width: 100%;
+#user-rock,
+#cpu-move {
+  width: 70%;
   height: auto;
 }
 
@@ -107,11 +112,14 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: absolute;
+  right: 10%;
+  bottom: 2.5%;
 }
 
 #user-player,
 #cpu-player {
-  width: 80%;
+  width: 70%;
   height: auto;
 }
 
@@ -145,4 +153,18 @@ body {
 button {
   border: none;
   background: none;
+}
+
+@media (min-width: 1921px) {
+  #user-player,
+  #cpu-player {
+    width: 90%;
+  }
+
+  #user-scissors,
+  #user-paper,
+  #user-rock,
+  #cpu-move {
+    width: 90%;
+  }
 }

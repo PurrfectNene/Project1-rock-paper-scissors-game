@@ -20,21 +20,35 @@ class Game {
     this.userScore = 0;
     this.cpuScore = 0;
 
-    this.initGame();
+    this.scissorsHandler = this.scissorsHandler.bind(this);
+    this.paperHandler = this.paperHandler.bind(this);
+    this.rockHandler = this.rockHandler.bind(this);
   }
 
   initGame() {
-    this.choices[0].addEventListener("click", () => {
-      this.playRound("scissors");
-    });
-    this.choices[1].addEventListener("click", () => {
-      this.playRound("paper");
-    });
-    this.choices[2].addEventListener("click", () => {
-      this.playRound("rock");
-    });
+    this.choices[0].addEventListener("click", this.scissorsHandler);
+    this.choices[1].addEventListener("click", this.paperHandler);
+    this.choices[2].addEventListener("click", this.rockHandler);
 
     this.cpuMoveImg.style.opacity = 0;
+  }
+
+  removeEventListeners() {
+    this.choices[0].removeEventListener("click", this.scissorsHandler);
+    this.choices[1].removeEventListener("click", this.paperHandler);
+    this.choices[2].removeEventListener("click", this.rockHandler);
+  }
+
+  scissorsHandler() {
+    this.playRound("scissors");
+  }
+
+  paperHandler() {
+    this.playRound("paper");
+  }
+
+  rockHandler() {
+    this.playRound("rock");
   }
 
   startGame() {
@@ -58,6 +72,7 @@ class Game {
 
     this.roundImg.src = `./images/${roundNumber}.png`;
     this.roundImg.alt = roundNumber;
+    this.initGame();
   }
 
   playerChoice(choice) {
@@ -97,6 +112,7 @@ class Game {
   }
 
   playRound(choice) {
+    this.removeEventListeners();
     this.playerChoice(choice);
     const cpuChoice = this.cpuRandom();
 

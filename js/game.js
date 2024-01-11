@@ -57,17 +57,6 @@ class Game {
     this.gameIntro.style.zIndex = "1";
     this.gameScreen.style.zIndex = "2";
 
-    this.choices[0].style.opacity = 1;
-    this.choices[1].style.opacity = 1;
-    this.choices[2].style.opacity = 1;
-
-    // setTimeout(() => {
-    //   const cpuMoveImg = document.getElementById("cpu-move");
-    //   cpuMoveImg.src = "";
-    //   cpuMoveImg.alt = "";
-    //   console.log("hand hidden");
-    // }, 2000);
-
     if(this.currentRound >=2){
       if(this.userScore > this.cpuScore) {
         this.nextRoundImg.src = "./images/nextround-win.png"
@@ -88,6 +77,9 @@ class Game {
       setTimeout(() => {
         this.nextRoundImg.style.opacity = 0
         this.cpuMoveImg.style.opacity = 0
+        this.choices[0].style.opacity = 1;
+        this.choices[1].style.opacity = 1;
+        this.choices[2].style.opacity = 1;
       }, 1500);
 
       console.log("hand hidden");

@@ -38,10 +38,9 @@ class Game {
   }
 
   startGame() {
-
     console.log("Started new game!")
     this.currentRound++
-    console.log(this.currentRound);
+    console.log(`Current round: ${this.currentRound}`);
 
     this.playerScoreLabel.textContent = `${this.userScore}`;
     this.playerScoreLabel.style.fontSize = '36px';
@@ -56,34 +55,6 @@ class Game {
     this.gameScreen.style.display = "block";
     this.gameIntro.style.zIndex = "1";
     this.gameScreen.style.zIndex = "2";
-
-    if(this.currentRound >=2){
-      if(this.userScore > this.cpuScore) {
-        this.nextRoundImg.src = "./images/nextround-win.png"
-        this.nextRoundImg.alt = "win round"
-        this.nextRoundImg.style.opacity = 1
-      }
-      else if(this.userScore === this.cpuScore){
-        this.nextRoundImg.src = "./images/nextround-tie.png"
-        this.nextRoundImg.alt = "tie round"
-        this.nextRoundImg.style.opacity = 1
-      }
-      else {
-        this.nextRoundImg.src = "./images/nextround-lose.png"
-        this.nextRoundImg.alt = "lose round"
-        this.nextRoundImg.style.opacity = 1
-      }
-      
-      setTimeout(() => {
-        this.nextRoundImg.style.opacity = 0
-        this.cpuMoveImg.style.opacity = 0
-        this.choices[0].style.opacity = 1;
-        this.choices[1].style.opacity = 1;
-        this.choices[2].style.opacity = 1;
-      }, 1500);
-
-      console.log("hand hidden");
-    }
 
     let roundNumber = `round${this.currentRound}`
 
@@ -155,6 +126,7 @@ class Game {
     console.log(this.results);
 
     setTimeout(() => {
+      this.displayOutcome()
       if(this.currentRound >= 2){
         this.checkOutcome()
       }
@@ -162,6 +134,37 @@ class Game {
         this.startGame()
       }
     }, 5000);
+  }
+
+  displayOutcome() {
+    let previousOutcome = this.results[this.currentRound - 1];
+    console.log(previousOutcome);
+
+    if(previousOutcome === "win") {
+      this.nextRoundImg.src = "./images/nextround-win.png"
+      this.nextRoundImg.alt = "win round"
+      this.nextRoundImg.style.opacity = 1
+    }
+    else if(previousOutcome === "tie"){
+      this.nextRoundImg.src = "./images/nextround-tie.png"
+      this.nextRoundImg.alt = "tie round"
+      this.nextRoundImg.style.opacity = 1
+    }
+    else {
+      this.nextRoundImg.src = "./images/nextround-lose.png"
+      this.nextRoundImg.alt = "lose round"
+      this.nextRoundImg.style.opacity = 1
+    }
+    
+    setTimeout(() => {
+      this.nextRoundImg.style.opacity = 0
+      this.cpuMoveImg.style.opacity = 0
+      this.choices[0].style.opacity = 1;
+      this.choices[1].style.opacity = 1;
+      this.choices[2].style.opacity = 1;
+    }, 1500);
+
+      console.log("hand hidden");
   }
 
   checkOutcome(){

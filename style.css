@@ -1,12 +1,19 @@
 body {
   padding: 0;
   text-align: center;
+
+  /* added: */
+  margin: 0; 
 }
 
 #game-intro {
   position: absolute;
-  left: 0px;
-  top: 0px;
+
+  /* left: 0px;
+  top: 0px; */
+  left: 0;
+  top: 0;
+
   z-index: 2;
   width: 100%;
   height: 100%;
@@ -21,6 +28,9 @@ body {
 
 #game-title-img {
   width: 30%;
+  
+  /* added: */
+  max-width: 60%;
 }
 
 #instructions {
@@ -31,11 +41,18 @@ body {
   border: 2px solid #4169e1;
   font-weight: bold;
   margin: 4%;
+
+  /* added: */
+  max-width: 90%;
+  box-sizing: border-box;
 }
 
 #start-button img {
   width: 70%;
   height: auto;
+
+  /* added: */
+  max-width: 55%;
 }
 
 #game-screen {
@@ -52,19 +69,18 @@ body {
 }
 
 #roundImg {
-  margin: 2% 0 2% 0;
+  margin: 2% 0;
   width: 12%;
   height: auto;
 }
 
-#player-score-img {
+#player-score-img, 
+#cpu-score-img {
   width: 10%;
   height: auto;
-}
 
-#cpu-score-img {
-  width: 8%;
-  height: auto;
+/* added: */
+  max-width: 50%;
 }
 
 #user-score-section,
@@ -72,6 +88,9 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: center;
+
+ /* added: */
+  align-items: center;
 }
 
 #user-score-number,
@@ -83,27 +102,47 @@ body {
   margin-top: 2%;
   opacity: 0;
   width: 15%;
+
+/* added: */
+  max-width: 60%;
 }
 
 .user-cpu-choices {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+
+/* added: */
+  flex-wrap: wrap;
 }
 
-#user-choice {
+#user-choice, #cpu-choice{
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   position: absolute;
-  left: 10%;
   bottom: 2.5%;
+
+/* added: */
+  width: 45%;
+}
+
+#user-choice {
+  left: 10%;
+}
+
+#cpu-choice {
+  right: 10%;
 }
 
 .paper-scissors-rock-img {
   display: flex;
   flex-direction: row;
+
+  /* added */
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 #user-scissors,
@@ -112,21 +151,30 @@ body {
 #cpu-move {
   width: 70%;
   height: auto;
+
+  /* added */
+  max-width: 100%;
 }
 
-#cpu-choice {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: absolute;
-  right: 10%;
-  bottom: 2.5%;
-}
 
-#user-player,
-#cpu-player {
-  width: 70%;
+
+#user-player {
+  width: 30%;
   height: auto;
+
+  /* to flip horizontally */
+  transform: scaleX(-1); 
+
+  /* added: */
+  max-width: 60%;
+}
+
+#cpu-player {
+  width: 24%;
+  height: auto;
+
+  /* added: */
+  max-width: 40%;
 }
 
 #game-end {
@@ -155,7 +203,7 @@ button {
   background: none;
 }
 
-@media (min-width: 1921px) {
+/* @media (min-width: 1921px) {
   #user-player,
   #cpu-player {
     width: 90%;
@@ -175,4 +223,4 @@ button {
   #instructions {
     font-size: 23px;
   }
-}
+} */
